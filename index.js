@@ -4,17 +4,13 @@ var onvif = require('onvif');
 var OnvifDevice = require('./lib/onvif-device')
 
 function OnvifManager() {
-  this.deviceList = {};
-  this.discoverState = 'stopped';
+  this.on('discover',     this.discoverDevices.bind(this));
+  this.on('stopdiscover', this.stopDiscoverDevices.bind(this));
 }
 
 util.inherits(OnvifManager, events.EventEmitter);
 
 OnvifManager.prototype.discoverDevices = function() {
-  var _this = this;
-  if (this.discoverState === 'discovering') {
-    return;
-  }
   //TODO: add only one event listener
   onvif.Discovery.on('device', function(cam) {
     cam.getDeviceInformation(function(err, info) {
@@ -27,11 +23,9 @@ OnvifManager.prototype.discoverDevices = function() {
     }.bind(this));
   }.bind(this));
   onvif.Discovery.probe();
-  this.discoverState = 'discovering';
 };
 
 OnvifManager.prototype.stopDiscoverDevices = function() {
-  this.discoverState = 'stopped';
 };
 
 module.exports = OnvifManager;

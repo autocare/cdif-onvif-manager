@@ -8,8 +8,14 @@
       "AbsoluteMoveArg": {
         "$ref": "#/onvif/ptz/moveArgs"
       },
+      "AbsoluteMoveResult": {
+        "type": "object"
+      },
       "RelativeMoveArg": {
         "$ref": "#/onvif/ptz/moveArgs"
+      },
+      "RelativeMoveResult": {
+        "type": "object"
       },
       "ContinuousMoveArg": {
         "type": "object",
@@ -38,10 +44,19 @@
           "y"
         ]
       },
+      "ContinuousMoveResult": {
+        "type": "object"
+      },
       "GetPresetsArg": {
         "type": "object"
       },
+      "GetPresetsResult": {
+        "type": "object"
+      },
       "GetNodesArg": {
+        "type": "object"
+      },
+      "GetNodesResult": {
         "type": "object"
       },
       "GotoPresetArg": {
@@ -58,6 +73,9 @@
           "preset"
         ]
       },
+      "GotoPresetResult": {
+        "type": "object"
+      },
       "StopArg": {
         "type": "object",
         "properties": {
@@ -69,7 +87,13 @@
           }
         }
       },
-      "PTZStatus": {
+      "StopResult": {
+        "type": "object"
+      },
+      "PTZStatusArg": {
+        "type": "object"
+      },
+      "PTZStatusResult": {
         "type": "object",
         "properties": {
           "position": {
@@ -84,12 +108,7 @@
               "zoom": {
                 "type": "number"
               }
-            },
-            "required": [
-              "x",
-              "y",
-              "zoom"
-            ]
+            }
           },
           "moveStatus": {
             "type": "object",
@@ -121,12 +140,7 @@
               "number"
             ]
           }
-        },
-        "required": [
-          "position",
-          "moveStatus",
-          "utcTime"
-        ]
+        }
       },
       "speed": {
         "type": "object",
@@ -198,6 +212,56 @@
             "pattern": "^http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace$"
           }
         ]
+      }
+    },
+    "media": {
+      "getStreamUriArg": {
+        "type": "object",
+        "properties": {
+          "streamType": {
+            "type": "string",
+            "enum": [
+              "RTP-Unicast",
+              "RTP-Multicast",
+              "MPEG"
+            ],
+            "default": "MPEG"
+          },
+          "transport": {
+            "type": "string",
+            "enum": [
+              "UDP",
+              "TCP",
+              "RTSP",
+              "HTTP",
+              "WebSocket"
+            ],
+            "default": "WebSocket"
+          }
+        },
+        "required": [
+          "streamType",
+          "transport"
+        ]
+      },
+      "getStreamUriResult": {
+        "type": "object",
+        "properties": {
+          "streamUri": {
+            "type": "string"
+          }
+        }
+      },
+      "getSnapshotUriArg": {
+        "type": "object"
+      },
+      "getSnapshotUriResult": {
+        "type": "object",
+        "properties": {
+          "snapshotUri": {
+            "type": "string"
+          }
+        }
       }
     }
   }

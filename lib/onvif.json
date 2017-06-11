@@ -8,8 +8,7 @@
     "deviceType": "urn:onvif-org:device:ONVIFCamera:1",
     "friendlyName": "",
     "manufacturer": "",
-    "modelName": "",
-    "userAuth": true,
+    "modelDescription": "",
     "devicePresentation": true,
     "serviceList": {
       "urn:onvif-org:serviceID:ONVIFMediaService": {
@@ -17,61 +16,49 @@
         "actionList": {
           "getStreamUri": {
             "argumentList": {
-              "streamType": {
+              "input": {
                 "direction": "in",
-                "relatedStateVariable": "streamType"
+                "relatedStateVariable": "A_ARG_TYPE_getStreamUriArg"
               },
-              "transport": {
-                "direction": "in",
-                "relatedStateVariable": "transport"
-              },
-              "streamUri": {
+              "output": {
                 "direction": "out",
-                "retval": true,
-                "relatedStateVariable": "streamUri"
+                "relatedStateVariable": "A_ARG_TYPE_getStreamUriResult"
               }
             }
           },
           "getSnapshotUri": {
             "argumentList": {
-              "snapshotUri": {
+              "input": {
+                "direction": "in",
+                "relatedStateVariable": "A_ARG_TYPE_getSnapshotUriArg"
+              },
+              "output": {
                 "direction": "out",
-                "retval": true,
-                "relatedStateVariable": "snapshotUri"
+                "relatedStateVariable": "A_ARG_TYPE_getSnapshotUriResult"
               }
             }
           }
         },
         "serviceStateTable": {
-          "streamType": {
+          "A_ARG_TYPE_getStreamUriArg": {
             "sendEvents": false,
-            "dataType": "string",
-            "allowedValueList": [
-              "RTP-Unicast",
-              "RTP-Multicast",
-              "MPEG"
-            ],
-            "defaultValue": "MPEG"
+            "dataType": "object",
+            "schema": "/onvif/media/getStreamUriArg"
           },
-          "transport": {
+          "A_ARG_TYPE_getStreamUriResult": {
             "sendEvents": false,
-            "dataType": "string",
-            "allowedValueList": [
-              "UDP",
-              "TCP",
-              "RTSP",
-              "HTTP",
-              "WebSocket"
-            ],
-            "defaultValue": "WebSocket"
+            "dataType": "object",
+            "schema": "/onvif/media/getStreamUriResult"
           },
-          "streamUri": {
+          "A_ARG_TYPE_getSnapshotUriArg": {
             "sendEvents": false,
-            "dataType": "string"
+            "dataType": "object",
+            "schema": "/onvif/media/getSnapshotUriArg"
           },
-          "snapshotUri": {
+          "A_ARG_TYPE_getSnapshotUriResult": {
             "sendEvents": false,
-            "dataType": "string"
+            "dataType": "object",
+            "schema": "/onvif/media/getSnapshotUriResult"
           }
         }
       },
@@ -80,110 +67,182 @@
         "actionList": {
           "absoluteMove": {
             "argumentList": {
-              "options": {
+              "input": {
                 "direction": "in",
-                "relatedStateVariable": "A_ARG_TYPE_AbsoluteMove"
+                "relatedStateVariable": "A_ARG_TYPE_AbsoluteMoveArg"
+              },
+              "output": {
+                "direction": "out",
+                "relatedStateVariable": "A_ARG_TYPE_AbsoluteMoveResult"
               }
             }
           },
           "relativeMove": {
             "argumentList": {
-              "options": {
+              "input": {
                 "direction": "in",
-                "relatedStateVariable": "A_ARG_TYPE_RelativeMove"
+                "relatedStateVariable": "A_ARG_TYPE_RelativeMoveArg"
+              },
+              "output": {
+                "direction": "out",
+                "relatedStateVariable": "A_ARG_TYPE_RelativeMoveResult"
               }
             }
           },
           "continuousMove": {
             "argumentList": {
-              "options": {
+              "input": {
                 "direction": "in",
-                "relatedStateVariable": "A_ARG_TYPE_ContinuousMove"
+                "relatedStateVariable": "A_ARG_TYPE_ContinuousMoveArg"
+              },
+              "output": {
+                "direction": "out",
+                "relatedStateVariable": "A_ARG_TYPE_ContinuousMoveResult"
               }
             }
           },
           "getPresets": {
             "argumentList": {
-              "presets": {
+              "input": {
+                "direction": "in",
+                "relatedStateVariable": "A_ARG_TYPE_GetPresetsArg"
+              },
+              "output": {
                 "direction": "out",
                 "retval": true,
-                "relatedStateVariable": "A_ARG_TYPE_GetPresets"
+                "relatedStateVariable": "A_ARG_TYPE_GetPresetsResult"
               }
             }
           },
           "gotoPreset": {
             "argumentList": {
-              "options": {
+              "input": {
                 "direction": "in",
-                "relatedStateVariable": "A_ARG_TYPE_GotoPreset"
+                "relatedStateVariable": "A_ARG_TYPE_GotoPresetArg"
+              },
+              "output": {
+                "direction": "out",
+                "relatedStateVariable": "A_ARG_TYPE_GotoPresetResult"
               }
             }
           },
           "getNodes": {
             "argumentList": {
-              "nodes": {
+              "input": {
+                "direction": "in",
+                "relatedStateVariable": "A_ARG_TYPE_GetNodesArg"
+              },
+              "output": {
                 "direction": "out",
-                "relatedStateVariable": "A_ARG_TYPE_GetNodes"
+                "relatedStateVariable": "A_ARG_TYPE_GetNodesResult"
               }
             }
           },
           "stop": {
             "argumentList": {
-              "options": {
+              "input": {
                 "direction": "in",
-                "relatedStateVariable": "A_ARG_TYPE_Stop"
+                "relatedStateVariable": "A_ARG_TYPE_StopArg"
+              },
+              "output": {
+                "direction": "out",
+                "relatedStateVariable": "A_ARG_TYPE_StopResult"
               }
             }
           },
           "getStatus": {
             "argumentList": {
-              "status": {
+              "input": {
+                "direction": "in",
+                "relatedStateVariable": "A_ARG_TYPE_PTZStatusArg"
+              },
+              "output": {
                 "direction": "out",
-                "relatedStateVariable": "PTZStatus"
+                "relatedStateVariable": "A_ARG_TYPE_PTZStatusResult"
               }
             }
           }
         },
         "serviceStateTable": {
-          "A_ARG_TYPE_AbsoluteMove": {
+          "A_ARG_TYPE_AbsoluteMoveArg": {
             "sendEvents": false,
             "dataType": "object",
             "schema": "/onvif/ptz/AbsoluteMoveArg"
           },
-          "A_ARG_TYPE_RelativeMove": {
+          "A_ARG_TYPE_AbsoluteMoveResult": {
+            "sendEvents": false,
+            "dataType": "object",
+            "schema": "/onvif/ptz/AbsoluteMoveResult"
+          },
+          "A_ARG_TYPE_RelativeMoveArg": {
             "sendEvents": false,
             "dataType": "object",
             "schema": "/onvif/ptz/RelativeMoveArg"
           },
-          "A_ARG_TYPE_ContinuousMove": {
+          "A_ARG_TYPE_RelativeMoveResult": {
+            "sendEvents": false,
+            "dataType": "object",
+            "schema": "/onvif/ptz/RelativeMoveResult"
+          },
+          "A_ARG_TYPE_ContinuousMoveArg": {
             "sendEvents": false,
             "dataType": "object",
             "schema": "/onvif/ptz/ContinuousMoveArg"
           },
-          "A_ARG_TYPE_Stop": {
+          "A_ARG_TYPE_ContinuousMoveResult": {
+            "sendEvents": false,
+            "dataType": "object",
+            "schema": "/onvif/ptz/ContinuousMoveResult"
+          },
+          "A_ARG_TYPE_StopArg": {
             "sendEvents": false,
             "dataType": "object",
             "schema": "/onvif/ptz/StopArg"
           },
-          "A_ARG_TYPE_GetPresets": {
+          "A_ARG_TYPE_StopResult": {
+            "sendEvents": false,
+            "dataType": "object",
+            "schema": "/onvif/ptz/StopResult"
+          },
+          "A_ARG_TYPE_GetPresetsArg": {
             "sendEvents": false,
             "dataType": "object",
             "schema": "/onvif/ptz/GetPresetsArg"
           },
-          "A_ARG_TYPE_GotoPreset": {
+          "A_ARG_TYPE_GetPresetsResult": {
+            "sendEvents": false,
+            "dataType": "object",
+            "schema": "/onvif/ptz/GetPresetsResult"
+          },
+          "A_ARG_TYPE_GotoPresetArg": {
             "sendEvents": false,
             "dataType": "object",
             "schema": "/onvif/ptz/GotoPresetArg"
           },
-          "A_ARG_TYPE_GetNodes": {
+          "A_ARG_TYPE_GotoPresetResult": {
+            "sendEvents": false,
+            "dataType": "object",
+            "schema": "/onvif/ptz/GotoPresetResult"
+          },
+          "A_ARG_TYPE_GetNodesArg": {
             "sendEvents": false,
             "dataType": "object",
             "schema": "/onvif/ptz/GetNodesArg"
           },
-          "PTZStatus": {
+          "A_ARG_TYPE_GetNodesResult": {
             "sendEvents": false,
             "dataType": "object",
-            "schema": "/onvif/ptz/PTZStatus"
+            "schema": "/onvif/ptz/GetNodesResult"
+          },
+          "A_ARG_TYPE_PTZStatusArg": {
+            "sendEvents": false,
+            "dataType": "object",
+            "schema": "/onvif/ptz/PTZStatusArg"
+          },
+          "A_ARG_TYPE_PTZStatusResult": {
+            "sendEvents": false,
+            "dataType": "object",
+            "schema": "/onvif/ptz/PTZStatusResult"
           }
         }
       }
