@@ -1,7 +1,7 @@
 var util = require('util');
 var events = require('events');
 var onvif = require('onvif');
-var OnvifDevice = require('./lib/onvif-device')
+var OnvifDevice = require('./lib/onvif-device');
 
 function OnvifManager() {
   this.on('discover',     this.discoverDevices.bind(this));
